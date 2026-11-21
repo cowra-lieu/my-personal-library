@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="个人公开资料库：整理、检索和阅读文档、笔记与技术资料。">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>My Library — 个人资料库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="./" aria-label="My Library 首页">
+        <span class="brand-mark">M</span>
+        <span><strong>My Library</strong><small>PERSONAL KNOWLEDGE BASE</small></span>
+      </a>
+
+      <div class="side-label">LIBRARY</div>
+      <nav class="side-nav" aria-label="资料分类">
+        <button class="nav-item active" data-category="all">
+          <span class="nav-icon">▦</span><span>全部资料</span><span class="nav-count" id="allCount">0</span>
+        </button>
+        <div id="categoryNav"></div>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-tip">
+          <span class="tip-icon">✦</span>
+          <strong>Keep learning.</strong>
+          <p>把值得收藏的知识，整理在这里。</p>
+        </div>
+        <span class="sidebar-foot">A small library on the web.</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="打开菜单">☰</button>
+        <div class="breadcrumb"><span>Library</span><span class="crumb-slash">/</span><strong id="currentLocation">全部资料</strong></div>
+        <div class="topbar-right"><span class="public-dot"></span><span>Public library</span></div>
+      </header>
+
+      <section class="welcome">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL COLLECTION</div>
+          <h1>知识值得被<br><span>整理与分享。</span></h1>
+          <p>一个轻量、开放的个人资料库。随时查找文档、技术笔记和灵感收藏。</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-card art-card-back"><span>PDF</span><i></i><i></i><i></i></div>
+          <div class="art-card art-card-front"><div class="art-file-icon">▤</div><strong>Knowledge</strong><small>COLLECT · ORGANIZE · GROW</small><div class="art-lines"><i></i><i></i><i></i></div></div>
+          <div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✦</div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="资料统计">
+        <article class="stat-card stat-total"><div class="stat-top"><span>全部资料</span><span class="stat-symbol">▤</span></div><strong id="totalStat">0</strong><small>COLLECTED ITEMS</small></article>
+        <article class="stat-card"><div class="stat-top"><span>分类</span><span class="stat-symbol">▦</span></div><strong id="categoryStat">0</strong><small>COLLECTIONS</small></article>
+        <article class="stat-card"><div class="stat-top"><span>PDF 文档</span><span class="stat-symbol">▧</span></div><strong id="pdfStat">0</strong><small>PDF DOCUMENTS</small></article>
+        <article class="stat-card"><div class="stat-top"><span>最近更新</span><span class="stat-symbol">◷</span></div><strong class="stat-date" id="updatedStat">—</strong><small>LATEST ADDITION</small></article>
+      </section>
+
+      <section class="category-section">
+        <div class="section-heading"><div><div class="section-kicker">BROWSE BY TOPIC</div><h2>探索分类</h2></div><button class="text-button" id="showAllCategories">查看全部 <span>→</span></button></div>
+        <div class="category-grid" id="categoryCards"></div>
+      </section>
+
+      <section class="library-section" id="librarySection">
+        <div class="section-heading library-heading"><div><div class="section-kicker">YOUR COLLECTION</div><h2 id="listHeading">全部资料</h2><p class="section-description" id="listDescription">浏览所有收藏的文档与笔记。</p></div></div>
+        <div class="toolbar">
+          <label class="search-box"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="搜索标题、描述或标签…" autocomplete="off"><kbd>⌘ K</kbd></label>
+          <label class="filter-wrap"><span class="sr-only">资料类型</span><select id="typeFilter"><option value="all">所有类型</option><option value="pdf">PDF</option><option value="html">网页笔记</option><option value="link">外部链接</option></select></label>
+          <select id="sortSelect" aria-label="排序方式"><option value="newest">最近添加</option><option value="oldest">最早添加</option><option value="title">标题 A–Z</option></select>
+        </div>
+        <div class="active-filters" id="activeFilters" hidden></div>
+        <div class="results-meta"><span id="resultCount">0 项资料</span><button id="clearFilters" class="clear-button" hidden>清除筛选</button></div>
+        <div class="resource-grid" id="resourceGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden><div class="empty-icon">⌕</div><h3>没有找到匹配的资料</h3><p>试试其他关键词，或清除当前筛选条件。</p><button class="primary-button" id="resetSearch">清除筛选</button></div>
+      </section>
+
+      <footer class="footer"><span>© <span id="year"></span> My Library</span><span>Made for curiosity <b>✦</b></span></footer>
+    </main>
+  </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

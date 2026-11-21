@@ -1,0 +1,64 @@
+[
+  {
+    "title": "React 19 学习资料（示例）",
+    "category": "Programming",
+    "tags": [
+      "React",
+      "JavaScript",
+      "Frontend"
+    ],
+    "description": "这里是一个示例条目。将 PDF 上传到对应目录后，修改 file 字段即可。",
+    "file": "#",
+    "type": "pdf",
+    "date": "2026-11-20"
+  },
+  {
+    "title": "JavaScript 进阶笔记（示例）",
+    "category": "Programming",
+    "tags": [
+      "JavaScript",
+      "ES2025"
+    ],
+    "description": "整理 JavaScript 语言特性、异步编程和常用 API。",
+    "file": "notes/articles/javascript-advanced.html",
+    "type": "html",
+    "date": "2026-11-18"
+  },
+  {
+    "title": "Web 技术资料（示例）",
+    "category": "Technology",
+    "tags": [
+      "Web",
+      "HTTP",
+      "Browser"
+    ],
+    "description": "浏览器、网络协议与 Web 平台相关的参考资料。",
+    "file": "#",
+    "type": "pdf",
+    "date": "2026-11-15"
+  },
+  {
+    "title": "值得收藏的网站（示例）",
+    "category": "Miscellaneous",
+    "tags": [
+      "Tools",
+      "Reference"
+    ],
+    "description": "一个外部链接类型的示例记录。将 file 改成完整网址即可。",
+    "file": "https://developer.mozilla.org/",
+    "type": "link",
+    "date": "2026-11-12"
+  },
+  {
+    "title": "电子书收藏（示例）",
+    "category": "Books",
+    "tags": [
+      "Book",
+      "Reading"
+    ],
+    "description": "书籍与阅读资料可以统一放在 Books 分类。",
+    "file": "#",
+    "type": "pdf",
+    "date": "2026-11-08"
+  }
+]
