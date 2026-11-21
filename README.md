@@ -11,6 +11,8 @@
 - PDF 在线阅读 / 下载（浏览器支持时）
 - HTML 笔记和外部链接
 - 响应式布局，支持桌面和手机
+- 深色 / 浅色模式手动切换，首次访问自动跟随系统主题
+- 使用 `localStorage` 记住主题选择；未手动选择时跟随系统主题变化
 - 使用 `data/library.json` 管理目录
 
 ## 本地预览
@@ -173,3 +175,13 @@ notes/articles/react-hooks.html
 - 仓库、单文件大小和 Pages 带宽等均受 GitHub 限制。上传大量或很大的 PDF 前，请查看 GitHub Pages 官方限制说明：
   https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
 - `#` 是示例条目的占位链接。正式使用时请将 `file` 替换成真实文件路径或 URL。
+
+
+## 深色模式
+
+页面顶部右侧有主题切换按钮，可在浅色模式和深色模式之间切换。
+
+- 首次访问时，自动读取设备 / 浏览器的深色模式偏好。
+- 手动切换后，会通过浏览器 `localStorage` 保存选择。
+- 保存了手动选择后，不再自动覆盖用户设置；清除该站点的本地存储后会重新跟随系统设置。
+- 主题切换不需要额外依赖，也不会影响资料目录或 GitHub Pages 部署。

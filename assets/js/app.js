@@ -153,6 +153,39 @@ function handleCategoryClick(event) {
   $("#librarySection").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function applyTheme(theme, persist = false) {
+  document.documentElement.dataset.theme = theme;
+  const isDark = theme === "dark";
+  const toggle = $("#themeToggle");
+  if (toggle) {
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("aria-label", isDark ? "切换浅色模式" : "切换深色模式");
+    toggle.title = isDark ? "切换浅色模式" : "切换深色模式";
+    toggle.querySelector(".theme-toggle-icon").textContent = isDark ? "☀" : "☾";
+    toggle.querySelector(".theme-toggle-label").textContent = isDark ? "浅色模式" : "深色模式";
+  }
+  const themeMeta = $("#themeColorMeta");
+  if (themeMeta) themeMeta.content = isDark ? "#171923" : "#f6f7fb";
+  if (persist) localStorage.setItem("my-library-theme", theme);
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem("my-library-theme");
+  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  applyTheme(savedTheme || (media && media.matches ? "dark" : "light"));
+  $("#themeToggle").addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme, true);
+  });
+  if (media) {
+    const updateFromSystem = event => {
+      if (!localStorage.getItem("my-library-theme")) applyTheme(event.matches ? "dark" : "light");
+    };
+    if (media.addEventListener) media.addEventListener("change", updateFromSystem);
+    else if (media.addListener) media.addListener(updateFromSystem);
+  }
+}
+
 function initEvents() {
   document.addEventListener("click", event => {
     if (event.target.closest("[data-category]")) handleCategoryClick(event);
@@ -197,6 +230,7 @@ function initEvents() {
 }
 
 async function init() {
+  initTheme();
   initEvents();
   try {
     const response = await fetch(DATA_URL);
