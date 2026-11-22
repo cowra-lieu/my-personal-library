@@ -1,14 +1,13 @@
 [
   {
-    "title": "React 19 学习资料（示例）",
+    "title": "动手学深度学习",
     "category": "Programming",
     "tags": [
-      "React",
-      "JavaScript",
-      "Frontend"
+      "AI",
+      "深度学习"
     ],
-    "description": "这里是一个示例条目。将 PDF 上传到对应目录后，修改 file 字段即可。",
-    "file": "#",
+    "description": "让深度学习可平易近人，教会人们概念、背景和代码。",
+    "file": "documents/books/动手学深度学习.pdf",
     "type": "pdf",
     "date": "2026-11-20"
   },
