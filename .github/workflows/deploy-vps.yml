@@ -1,0 +1,24 @@
+name: Deploy Static Site to VPS
+
+on:
+  push:
+    branches:
+      - main  # 如果你的默认分支是 master，请改为 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync files to VPS via rsync
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete --exclude='.git*' --exclude='.github'
+          path: ./
+          remote_path: /var/www/my-personal-library/
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_port: ${{ secrets.VPS_PORT }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_key: ${{ secrets.VPS_SSH_KEY }}
